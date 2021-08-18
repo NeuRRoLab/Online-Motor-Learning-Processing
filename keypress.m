@@ -159,8 +159,13 @@ if saveoutput
 %     end
 %     processeddata = array2table(processeddata,'variablenames', headers);\
     mkdir("data_ready");
-    filename = strcat('data_ready\',experiment_code,'.xlsx');
+    exp_type = "offline";
+    if experiment_code == "C6XN"
+        exp_type = "online";
+    end
+    filename = strcat('data_ready\',exp_type,'.xlsx');
     writetable(processeddata,filename);
+    save(strcat('data_ready\',exp_type),'processeddata');
 end
 
     
