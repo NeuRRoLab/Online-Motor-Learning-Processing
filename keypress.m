@@ -4,9 +4,9 @@ close all;
 %% 
 addpath('C:\Users\Mouli\OneDrive - Michigan Medicine\Desktop\Things to Add in Dropbox\Matlab course\Course Materials\Other Programs\myfunctions');
 addpath('C:\Users\Mouli\OneDrive - Michigan Medicine\Desktop\Herokuapp');
-data = readtable('processed_experiment_C6XN_21.csv');
+data = readtable('processed_experiment_C6XN_25.csv');
 subjectcode = unique(data.subject_code);
-subject = 14;
+subject = 18;
 nblock = 36;
 true = 1; false = 0;
 saveoutput = true;

@@ -3,15 +3,16 @@ clear all
 close all
 %% 
 addpath('C:\Users\mouli\OneDrive - Michigan Medicine\Desktop\Things to Add in Dropbox\Matlab course\Course Materials\Other Programs\myfunctions');
-data = xlsread('mean_tapping_speed.xlsx');
-meanleft1 = data(:,1);
-semleft1 = data(:,2);
-meanright1 = data(:,3);
-semright1 = data(:,4);
-meanleft2 = data(:,5);
-semleft2 = data(:,6);
-meanright2 = data(:,7);
-semright2 = data(:,8);
+onlinedata = xlsread('onlinemeantappingspeedata');
+inpersondata = xlsread('inpersonmeantappingspeedata');
+meanleft1 = onlinedata(:,1);
+semleft1 = onlinedata(:,9);
+meanright1 = onlinedata(:,5);
+semright1 = onlinedata(:,13);
+meanleft2 = inpersondata(:,1);
+semleft2 = inpersondata(:,9);
+meanright2 = inpersondata(:,5);
+semright2 = inpersondata(:,13);
 %% 
 fig = figure;
 a = [1:1:36];

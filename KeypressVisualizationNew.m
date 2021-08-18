@@ -4,7 +4,7 @@ close all;
 %% defines location of path for functions and data files
 addpath('C:\Users\mouli\OneDrive - Michigan Medicine\Desktop\Things to Add in Dropbox\Matlab course\Course Materials\Other Programs\myfunctions');
 addpath('C:\Users\mouli\OneDrive - Michigan Medicine\Desktop\Herokuapp');
-data = readtable('raw_experiment_C6XN_21.csv');
+data = readtable('raw_experiment_C6XN_25.csv');
 %% variables to define
 left = 0; right = 1;%do not change these values, change below on the side
 side = left;%defines the side of the training
