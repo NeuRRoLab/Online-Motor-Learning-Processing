@@ -1,4 +1,4 @@
-function varargout = boundedline(varargin)
+function varargout = boundedline_mod(varargin)
 %BOUNDEDLINE Plot a line with shaded error/confidence bounds
 %
 % [hl, hp] = boundedline(x, y, b)
@@ -352,7 +352,7 @@ for iln = 1:nline
 end
 
 for iln = 1:nline
-    hl(iln) = line(xl{iln}, yl{iln}, 'marker', marker{iln}, 'linestyle', lnsty{iln}, 'color', lncol{iln}, 'parent', hax);
+    hl(iln) = line(xl{iln}, yl{iln}, 'marker', '.', 'linestyle', lnsty{iln}, 'color', lncol{iln}, 'parent', hax);
 end
 
 %--------------------

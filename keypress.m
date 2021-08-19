@@ -3,10 +3,10 @@ clear;
 close all;
 %% 
 addpath('.\myfunctions');
-% data = readtable('.\data\bonstrup_processed_C6XN.csv');
-data = readtable('.\data\processed_experiment_C6XN.csv');
-tapping_speed_column = 'tapping_speed_mean';
-% tapping_speed_column = 'tapping_speed_mean_aggregated';
+data = readtable('.\data\bonstrup_processed_C6XN.csv');
+% data = readtable('.\data\processed_experiment_C6XN.csv');
+% tapping_speed_column = 'tapping_speed_mean';
+tapping_speed_column = 'tapping_speed_mean_aggregated';
 subjectcodes = unique(data.subject_code);
 nblock = 36;
 true = 1; false = 0;
@@ -102,52 +102,7 @@ end
 leftlearning = (leftmicroonline + leftmicrooffline);
 rightlearning = (rightmicroonline + rightmicrooffline);
 
-%% Plot data
-for j=1:length(subjectcodes)
-    ID = subjectcodes(j);
-    subj_data = data(data.subject_code == ID,:);
-    subj_left = subj_data(subj_data.block_id <= nblock,:);
-    subj_left = subj_left(subj_left.correcttrial == {'True'},:);
-    subj_right = subj_data(subj_data.block_id > nblock,:);
-    subj_right = subj_right(subj_right.correcttrial == {'True'},:);
-    
-    figure; 
-    subplot(2,2,1); h1 = stackedplot(subj_left{:,tapping_speed_column},'.','markersize',20);
-    ax1 = findobj(h1.NodeChildren, 'Type','Axes');
-    set([ax1.YLabel],'Rotation',90,'HorizontalAlignment', 'Center', 'VerticalAlignment', 'Bottom');
-    title(ID);
-    subplot(2,2,2); h2 = stackedplot(subj_right{:,tapping_speed_column},'.','markersize',20);
-    ax2 = findobj(h2.NodeChildren, 'Type','Axes');
-    set([ax2.YLabel],'Rotation',90,'HorizontalAlignment', 'Center', 'VerticalAlignment', 'Bottom');
-    title(ID);
-    subplot(2,2,3); plot(blockmeanleft,'b.','markersize',20);
-    axis([0,nblock+1,0,nanmax([blockmeanleft;0.1])*1.2]);
-    title('Left');
-    subplot(2,2,4); plot(blockmeanright,'r.','markersize',20);
-    axis([0,nblock+1,0,nanmax([blockmeanright;0.1])*1.2]);
-    title('Right');
 
-    figure; 
-    subplot(2,1,1); plot(leftmicroonline,'b-.','linewidth',2);
-    hold on
-    plot(leftmicrooffline(1:nblock-1),'r-.','linewidth',2); %note, last value for offline learning is omitted because it will be always 0
-    hold on
-    plot(leftlearning,'k-','linewidth',2);
-    axis([0,nblock+1, min(min(rightmicroonline),min(leftmicroonline))*1.5, max(max(rightmicrooffline),max(leftmicrooffline)) * 1.5]);
-    title('Left Microscale Learning');
-    legend('micro-online','micro-offline','Total');
-    legend('location', 'northeastoutside');
-
-    subplot(2,1,2); plot(rightmicroonline,'b-.','linewidth',2);
-    hold on
-    plot(rightmicrooffline(1:nblock-1),'r-.','linewidth',2); %note, last value for offline learning is omitted because it will be always 0
-    hold on
-    plot(rightlearning,'k-','linewidth',2);
-    axis([0,nblock+1, min(min(rightmicroonline),min(leftmicroonline))*1.5, max(max(rightmicrooffline),max(leftmicrooffline)) * 1.5]);
-    title('Right Microscale Learning');
-    legend('micro-online','micro-offline','Total');
-    legend('location', 'northeastoutside');
-end
 
  %% Save data
 if saveoutput
