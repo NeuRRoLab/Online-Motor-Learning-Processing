@@ -3,11 +3,15 @@ clear;
 close all;
 %% 
 addpath('.\myfunctions');
-data = readtable('.\data\bonstrup_processed_C6XN.csv');
-% data = readtable('.\data\processed_experiment_C6XN.csv');
-% tapping_speed_column = 'tapping_speed_mean';
-tapping_speed_column = 'tapping_speed_mean_aggregated';
+data = readtable('.\data\processed_experiment_C6XN.csv');
+% For our way of processing
+tapping_speed_column = 'tapping_speed_mean';
+% Exclude subjects
+excluded_subjects = categorical(["IKLgXSxdg4WBhLQC","7UaSAihDn1q9Vv05"]);
+data = data(~ismember(data.subject_code, excluded_subjects),:);
 subjectcodes = unique(data.subject_code);
+% subjectcodes = subjectcodes
+
 nblock = 36;
 true = 1; false = 0;
 saveoutput = true;
@@ -60,16 +64,17 @@ for j = 1:length(subjectcodes)
         else
             leftmicroonline(j,i) = 0;
         end
-
+        
+        % If both have at least one correct trial
         if size(leftB1,1)>0 && size(leftB2,1)>0
             leftmicrooffline(j,i) = leftB2{1,tapping_speed_column}-leftB1{end,tapping_speed_column};
-
+        % If the next block doesn't have any correct trials
         elseif size(leftB1,1)>0 && size(leftB2,1)==0 && i ~=nblock
             leftmicrooffline(j,i) = 0-leftB1{end,tapping_speed_column};
-
+        % If the next block has one correct trial
         elseif size(leftB1,1)==0 && size(leftB2,1)>0
             leftmicrooffline(j,i) = leftB2{1,tapping_speed_column};
-
+        % If neither has any correct trials
         else
             leftmicrooffline(j,i) = 0;
         end

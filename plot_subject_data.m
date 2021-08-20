@@ -2,11 +2,12 @@ clear;
 
 % Change subject index and filename as necessary
 subj_index = 3;
-filename = ".\data_ready\offline.mat";
+filename = ".\data_ready\online.mat";
 
 % Load data
 data = load(filename).processeddata;
-ID = char(data.SubjectID(subj_index));
+% ID = char(data.SubjectID(subj_index));
+ID = "7UaSAihDn1q9Vv05";
 subj_data = data(strcmp(data.SubjectID,ID),:);
 %% Plot data
 figure;

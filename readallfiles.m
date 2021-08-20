@@ -67,7 +67,7 @@ hold on
 plot(meanleftmicrooffline(1:35,1),'r-.','linewidth',2); %note, last value for offline learning is omitted because it will be always 0
 hold on
 plot(meanlefttotal(:,1),'k-','linewidth',2);
-axis([0,37, min(min(meanrightmicroonline,[],'all'),min(meanleftmicroonline,[],'all'))*1.5, max(max(meanrightmicrooffline,[],'all'),max(meanleftmicrooffline,[],'all'))*1.5]);
+axis([0,37, min(min(meanleftmicroonline,[],'all'),min(meanleftmicrooffline,[],'all'))*1.5, max(max(meanleftmicroonline,[],'all'),max(meanleftmicrooffline,[],'all'))*1.5]);
 title('Left Microscale Learning - In Person');
 legend('micro-online','micro-offline','Total');
 legend('location', 'southwest');
@@ -77,7 +77,7 @@ hold on
 plot(meanrightmicrooffline(1:35,1),'r-.','linewidth',2); %note, last value for offline learning is omitted because it will be always 0
 hold on
 plot(meanrighttotal(:,1),'k-','linewidth',2);
-axis([0,37, min(min(meanrightmicroonline,[],'all'),min(meanleftmicroonline,[],'all'))*1.5, max(max(meanrightmicrooffline,[],'all'),max(meanleftmicrooffline,[],'all'))*1.5]);
+axis([0,37, min(min(meanrightmicroonline,[],'all'),min(meanrightmicrooffline,[],'all'))*1.5, max(max(meanrightmicroonline,[],'all'),max(meanrightmicrooffline,[],'all'))*1.5]);
 title('Right Microscale Learning - In Person');
 legend('micro-online','micro-offline','Total');
 legend('location', 'southwest');
@@ -87,7 +87,7 @@ hold on
 plot(meanleftmicrooffline(1:35,2),'r-.','linewidth',2); %note, last value for offline learning is omitted because it will be always 0
 hold on
 plot(meanlefttotal(:,2),'k-','linewidth',2);
-axis([0,37, min(min(meanrightmicroonline,[],'all'),min(meanleftmicroonline,[],'all'))*1.5, max(max(meanrightmicrooffline,[],'all'),max(meanleftmicrooffline,[],'all'))*1.5]);
+axis([0,37, min(min(meanleftmicroonline,[],'all'),min(meanleftmicrooffline,[],'all'))*1.5, max(max(meanleftmicroonline,[],'all'),max(meanleftmicrooffline,[],'all'))*1.5]);
 title('Left Microscale Learning - Online');
 legend('micro-online','micro-offline','Total');
 legend('location', 'southwest');
@@ -97,7 +97,7 @@ hold on
 plot(meanrightmicrooffline(1:35,2),'r-.','linewidth',2); %note, last value for offline learning is omitted because it will be always 0
 hold on
 plot(meanrighttotal(:,2),'k-','linewidth',2);
-axis([0,37, min(min(meanrightmicroonline,[],'all'),min(meanleftmicroonline,[],'all'))*1.5, max(max(meanrightmicrooffline,[],'all'),max(meanleftmicrooffline,[],'all'))*1.5]);
+axis([0,37, min(min(meanrightmicroonline,[],'all'),min(meanrightmicrooffline,[],'all'))*1.5, max(max(meanrightmicroonline,[],'all'),max(meanrightmicrooffline,[],'all'))*1.5]);
 title('Right Microscale Learning - Online');
 legend('micro-online','micro-offline','Total');
 legend('location', 'southwest');
@@ -135,7 +135,7 @@ subplot(3,2,3);
 [l,p] = boundedline_mod(a(1:35), meanleftmicrooffline(1:35,1), semleftmicrooffline(1:35,1), 'r-.', a, meanleftmicroonline(:,1), semleftmicroonline(:,1), '-b.', a, meanlefttotal(:,1), semlefttotal(:,1), '-k.', 'transparency',0.1);
 l(1).MarkerSize = 20;l(2).MarkerSize = 20;l(3).MarkerSize = 20;
 % outlinebounds(l,p);
-axis([0,37, min(min(meanrightmicroonline,[],'all'),min(meanleftmicroonline,[],'all'))*2, max(max(meanrightmicrooffline,[],'all'),max(meanleftmicrooffline,[],'all'))*2]);
+axis([0,37, min(min(meanrightmicroonline,[],'all'),min(meanleftmicrooffline,[],'all'))*2, max(max(meanrightmicroonline,[],'all'),max(meanleftmicrooffline,[],'all'))*2]);
 Ti = title('Mean Left Microscale Learning - In Person'); Ti.FontSize = 18;
 lgd = legend(l,'micro-offline','micro-online','Total');lgd.FontSize = 14;
 legend('location', 'best');
@@ -149,7 +149,7 @@ subplot(3,2,4);
 [l,p] = boundedline_mod(a(1:35), meanrightmicrooffline(1:35,1), semrightmicrooffline(1:35,1), '-r.', a, meanrightmicroonline(:,1), semrightmicroonline(:,1), '-b.', a, meanrighttotal(:,1), semrighttotal(:,1), '-k.', 'transparency',0.1);
 l(1).MarkerSize = 20;l(2).MarkerSize = 20;l(3).MarkerSize = 20;
 % outlinebounds(l,p);
-axis([0,37, min(min(meanrightmicroonline,[],'all'),min(meanleftmicroonline,[],'all'))*2, max(max(meanrightmicrooffline,[],'all'),max(meanleftmicrooffline,[],'all'))*2]);
+axis([0,37, min(min(meanrightmicroonline,[],'all'),min(meanleftmicrooffline,[],'all'))*2, max(max(meanrightmicroonline,[],'all'),max(meanleftmicrooffline,[],'all'))*2]);
 Ti = title('Mean Right Microscale Learning - In Person'); Ti.FontSize = 18;
 lgd = legend(l,'micro-offline','micro-online','Total'); lgd.FontSize = 14;
 legend('location', 'best');
@@ -164,7 +164,7 @@ subplot(3,2,5);
 [l,p] = boundedline_mod(a(1:35), meanleftmicrooffline(1:35,2), semleftmicrooffline(1:35,2), 'r-.', a, meanleftmicroonline(:,2), semleftmicroonline(:,2), '-b.', a, meanlefttotal(:,2), semlefttotal(:,2), '-k.', 'transparency',0.1);
 l(1).MarkerSize = 20;l(2).MarkerSize = 20;l(3).MarkerSize = 20;
 % outlinebounds(l,p);
-axis([0,37, min(min(meanrightmicroonline,[],'all'),min(meanleftmicroonline,[],'all'))*2, max(max(meanrightmicrooffline,[],'all'),max(meanleftmicrooffline,[],'all'))*2]);
+axis([0,37, min(min(meanrightmicroonline,[],'all'),min(meanleftmicrooffline,[],'all'))*2, max(max(meanrightmicroonline,[],'all'),max(meanleftmicrooffline,[],'all'))*2]);
 Ti = title('Mean Left Microscale Learning - Online'); Ti.FontSize = 18;
 lgd = legend(l,'micro-offline','micro-online','Total');lgd.FontSize = 14;
 legend('location', 'best');
@@ -178,7 +178,7 @@ subplot(3,2,6);
 [l,p] = boundedline_mod(a(1:35), meanrightmicrooffline(1:35,2), semrightmicrooffline(1:35,2), '-r.', a, meanrightmicroonline(:,2), semrightmicroonline(:,2), '-b.', a, meanrighttotal(:,2), semrighttotal(:,2), '-k.', 'transparency',0.1);
 l(1).MarkerSize = 20;l(2).MarkerSize = 20;l(3).MarkerSize = 20;
 % outlinebounds(l,p);
-axis([0,37, min(min(meanrightmicroonline,[],'all'),min(meanleftmicroonline,[],'all'))*2, max(max(meanrightmicrooffline,[],'all'),max(meanleftmicrooffline,[],'all'))*2]);
+axis([0,37, min(min(meanrightmicroonline,[],'all'),min(meanleftmicrooffline,[],'all'))*2, max(max(meanrightmicroonline,[],'all'),max(meanleftmicrooffline,[],'all'))*2]);
 Ti = title('Mean Right Microscale Learning - Online'); Ti.FontSize = 18;
 lgd = legend(l,'micro-offline','micro-online','Total'); lgd.FontSize = 14;
 legend('location', 'best');
