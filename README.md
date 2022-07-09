@@ -6,7 +6,7 @@ It works for the following experiments:
 
 1. 5P6U: supervised experiment started with the left hand.
 2. C6XN: unsupervised experiment started with the left hand.
-3. DHXY: unsupervised experiment started with the right hand.
+
 
 ## Files
 
